@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Book Details</h1>
+
+<br><br>
+{% comment %} <div class='container' id="bookDetailDisplay" style="justify-content: center; align-items: center;">
+</div> {% endcomment %}
+
+<div class='container' id="bookDetailDisplay">
+
+    <div>
+        {% if user.is_authenticated %}
+            <div id="checkin"> 
+
+            </div>
+            <div id="checkout"> 
+
+            </div>
+            <div id="download"> 
+
+            </div>
+        {% else %}
+            <p>You must log in to borrow/return books.</p>
+        {% endif %}
+    </div>
+</div>
+
+<br>
+
+<h3>Comments</h3>
+<div class='container' id="commentsDisplay">
+
+</div>
+
+<div class='container'>
+    <h5>Add Comment</h5>
+    {% if user.is_authenticated %}
+        <p>Commenting as <strong>{{user.first_name}} {{user.last_name}}</strong></p>
+        <form id="CommentForm">
+            <div class="mb-3">
+                <label for="InputComment" class="form-label"></label>     
+                <input class="form-control" id="body" type="text" name="body">
+            </div>
+            <input type="submit" name="submit" value="Add Comment">
+        </form>
+    {% else %}
+        <p>You are not logged in. You must log in to comment and modify own posts.</p>
+        <a href="{% url 'users:login' %}">Log In</a>
+    {% endif %}
+</div>
+
+<br>
+<button type="button" id="deleteButton">Delete Book</button>
+<br>
+
+
+{% endblock %}
+
+{% block extra_script %}
+<script type="text/javascript" src="{% static 'books/book_details.js' %}"></script>
+{% endblock %}
+

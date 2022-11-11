@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    <h2>Welcome {{user.first_name}} {{user.last_name}}</h2>
+{% else %}
+    <h2>Please login</h2>
+{% endif %}
+<h1>Book List</h1>
+<div id="dataDisplay" class="row">
+
+</div>
+
+<script type="text/javascript" src="{% static 'books/books.js' %}"></script>
+{% endblock %}
+

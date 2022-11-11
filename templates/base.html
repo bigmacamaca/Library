@@ -1,0 +1,82 @@
+{% load static %}
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% comment %} ajax import {% endcomment %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        {% comment %} Bootstrap import {% endcomment %}
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    
+
+        {% comment %} NAVBAR {% endcomment %}
+  {% comment %} Start of Navbar {% endcomment %}
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #54BAB9;">
+    <div class="container-fluid">
+      
+      <a class="navbar-brand" href="#">
+        <img src="{% static '/bookIcon.png/' %}" width="30" height="30">
+        Library
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'books:home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'users:all-users' %}">User List</a>
+          </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:profile' user.id %}">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="logoutLlink">Logout</a>
+          </li>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'users:change-password' %}">Change Password</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'books:registerBook' %}">Register a Book</a>
+        </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:login' %}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:register' %}">Register</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+        <span class="navbar-text">
+          {{user.email}}
+        </span>
+    </div>
+  </nav>
+
+
+    </head>
+
+    <body>
+        {% block content %}
+        {% endblock %}
+        
+        <script>
+
+            var firstname = "{{user.first_name}}"
+            var lastname = "{{user.last_name}}"
+        </script>
+        {% comment %} Bootstrap JS import {% endcomment %}
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        {% block extra_script %}
+
+        {% endblock %}
+    </body>
+
+</html>

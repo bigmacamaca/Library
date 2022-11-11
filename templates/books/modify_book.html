@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Modify Book</h1>
+<br><br>
+<div class='container' id="bookDetailDisplay" style="justify-content: center; align-items: center;">
+</div>
+<div class='container' style="justify-content: center; align-items: center;">
+    <div class="position-relative">
+        <form id="updateBookForm" id="bookFormDisplay">
+            <div class="mb-3">
+                <label for="InputTitle" class="form-label">Title: </label>
+                <input class="form-control" id="title" type="text" name="title">
+            </div>
+            <div class="mb-3">
+                <label for="InputDescription" class="form-label">Description: </label>
+                <input class="form-control" id="description" type="text" name="description">
+            </div>
+            <div class="mb-3">
+                <label for="InputCoverImage" class="form-label">Cover Image: </label>
+                <input class="form-control" id="coverImage" type="file" name="coverImage">
+            </div>
+            <div class="mb-3">
+                <select class="form-select" aria-label="Default Select Example" id="bookType" name="bookType">
+                    <option value="">Select Book Type</option>
+                    <option value="PHYSICAL">Physical</option>
+                    <option value="PAPERBACK">Paperback</option>
+                    <option value="DIGITAL">Digital</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <select class="form-select" aria-label="Default Select Example" id="bookLocation" name="bookLocation">
+                    <option value="">Select Book Location</option>
+                    <option value="HOME">Home</option>
+                    <option value="OFFICE">Office</option>
+                    <option value="INTO THE MATRIX">Into the Matrix</option>
+                </select>
+            </div>
+            <input type="submit" name="submit" value="Submit">
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript" src="{% static 'books/modifyBooks.js' %}"></script>
+{% endblock %}

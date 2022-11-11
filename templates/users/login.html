@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-md">
+  <form id="loginForm" novalidate>
+      <!-- Email input -->
+      <div class="form-outline mb-4">
+        <input type="email" id="email" class="form-control" />
+        <label class="form-label" for="email">Email address</label>
+      </div>
+    
+      <!-- Password input -->
+      <div class="form-outline mb-4">
+        <input type="password" id="password" class="form-control" />
+        <label class="form-label" for="password">Password</label>
+      </div>
+    
+      <!-- 2 column grid layout for inline styling -->
+      <div class="row mb-4">
+        <div class="col d-flex justify-content-center">
+    
+
+      </div>
+    
+      <!-- Submit button -->
+      {% comment %} <button type="button" class="btn btn-primary btn-block mb-4">Sign in</button> {% endcomment %}
+      <input type="submit" name="login" value="Submit">
+    
+      <!-- Register buttons -->
+
+  </form>
+</div>
+
+
+<script type="text/javascript" src="{% static 'users/login.js' %}"></script>
+{% endblock %}

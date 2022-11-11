@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>All Users</h1>
+<div class="container mt-5 d-flex justify-content-center" id="UserListDisplay"> 
+    {% comment %} use tables {% endcomment %}
+
+</div>
+
+<script type="text/javascript" src="{% static 'users/listUsers.js' %}"></script>
+{% endblock %}
